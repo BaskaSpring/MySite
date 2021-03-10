@@ -46,10 +46,7 @@
 
 <div class="container"><div class="row"><div class="col-md-12">
     <h1 class="text-center">Календарь</h1>
-    <input type="hidden"
-           th:name="${_csrf.parameterName}"
-           th:value="${_csrf.token}" />
-    <script th:inline="javascript">
+      <script th:inline="javascript">
         /*<![CDATA[*/
         let MyList = new Array();
         /*[# th:each="el : ${spisok}"]*/
@@ -89,17 +86,15 @@
                         label = true;
                     }
                 })
-                document.write("<td><form method='post'>");
-                document.write("<input type='hidden' value="+datte+" name='date'>");
-                document.write("<input type='hidden' th:name="+${_csrf.parameterName}+" th:value="+${_csrf.token}+" />");
+                document.write("<td>");
                 if (label == false) {
-                    document.write("<button type='submit' class='btn btn-primary'>" + day + "</button>");
+                    document.write("<a class='btn btn-primary' href='/calendar/"+datte+"' role='button'>"+day+"</a>");
                 }
                 else {
-                    document.write("<button type='submit' class='btn btn-danger'>"+day+"</button>");
+                    document.write("<a class='btn btn-primary' href='/calendar/"+datte+"' role='button'>"+day+"</a>");
                 }
-                document.write("</div></form></td>");
-               day++
+                document.write("</td>");
+                day++
             }
             document.write("<tr>")
             while (day <= month_length) {
@@ -111,16 +106,14 @@
                             label = true;
                         }
                     })
-                    document.write("<td><form method='POST'>");
-                    document.write("<input type='hidden' value="+datte+" name='date'>");
-                    document.write("<input type='hidden' th:name="+${_csrf.parameterName}+" th:value="+${_csrf.token}+" />");
+                    document.write("<td>");
                     if (label == false) {
-                        document.write("<button type='submit' class='btn btn-primary'>" + day + "</button>");
+                        document.write("<a class='btn btn-primary' href='/calendar/"+datte+"' role='button'>"+day+"</a>");
                     }
                     else {
-                        document.write("<button type='submit' class='btn btn-danger'>"+day+"</button>");
+                        document.write("<a class='btn btn-primary' href='/calendar/"+datte+"' role='button'>"+day+"</a>");
                     }
-                    document.write("</div></form></td>");
+                    document.write("</td>");
                     day++
                 }
                 document.write("</tr><tr>")
